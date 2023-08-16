@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class FreekickCore : MonoBehaviour
 {
-    [Header("Ball Rigidbody")]
+    [Header("Ball")]
     public Rigidbody ball;
-
+    public AudioSource shootAudioSource;
+    public AudioClip shootAudioClip;
+    
     [Header("UI")]
     public RectTransform ballHitPos;
     public Slider shootSlider;
@@ -20,7 +22,6 @@ public class FreekickCore : MonoBehaviour
     public TextMeshProUGUI ballDistanceText;
     
     [Header("Freekick Positions")]
-    public Transform shootPoint;
     public Transform freekickPoint;
     public Transform farTarget;
     public Transform nearTarget;
@@ -72,17 +73,15 @@ public class FreekickCore : MonoBehaviour
 
         SetInstructionPanels(true, false, false);
         
-        if (Input.GetKey(KeyCode.W)) TranslateShootPointWithInput(Vector3.forward);
-        if (Input.GetKey(KeyCode.S)) TranslateShootPointWithInput(-Vector3.forward);
-        if (Input.GetKey(KeyCode.D)) TranslateShootPointWithInput(Vector3.right);
-        if (Input.GetKey(KeyCode.A)) TranslateShootPointWithInput(-Vector3.right);
-
-        freekickPoint.transform.position = shootPoint.transform.position;
+        if (Input.GetKey(KeyCode.W)) TranslateFreekickPointWithInput(Vector3.forward);
+        if (Input.GetKey(KeyCode.S)) TranslateFreekickPointWithInput(-Vector3.forward);
+        if (Input.GetKey(KeyCode.D)) TranslateFreekickPointWithInput(Vector3.right);
+        if (Input.GetKey(KeyCode.A)) TranslateFreekickPointWithInput(-Vector3.right);
     }
 
-    private void TranslateShootPointWithInput(Vector3 direction)
+    private void TranslateFreekickPointWithInput(Vector3 direction)
     {
-        shootPoint.Translate(direction * (5f * Time.deltaTime)); 
+        freekickPoint.Translate(direction * (5f * Time.deltaTime)); 
     }
 
     private void SetFreekickCurveSettings(Vector3 ballHitDir, float ballHitValue, Vector3 farTargetDir, float farTargetValue,Vector3 nearTargetDir, float nearTargetValue)
@@ -207,6 +206,7 @@ public class FreekickCore : MonoBehaviour
         if (ballDistanceText.gameObject.activeSelf) ballDistanceText.gameObject.SetActive(false);
         SetInstructionPanels(false, false, false);
 
+        BallSoundPlayer.PlaySound(shootAudioSource, shootAudioClip, 1 - (1 - (50f / _power)) * 0.2f);
         StartCoroutine(ShootToNearTarget());
     }
 
