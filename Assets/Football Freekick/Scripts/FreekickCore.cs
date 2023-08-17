@@ -27,6 +27,10 @@ public class FreekickCore : MonoBehaviour
     public Transform nearTarget;
     public Transform goalCenter;
     
+    private const float XMin = -4.8f;
+    private const float XMax = 4.8f;
+    private const float ZMin = -4.4f;
+    private const float ZMax = 4.4f;
     private bool _isShooting;
     private bool _isBallHit;
     private bool _isAvailableForNewFreekick = true;
@@ -81,7 +85,14 @@ public class FreekickCore : MonoBehaviour
 
     private void TranslateFreekickPointWithInput(Vector3 direction)
     {
-        freekickPoint.Translate(direction * (5f * Time.deltaTime)); 
+        freekickPoint.Translate(direction * (5f * Time.deltaTime));
+        
+        // restricting the ball in an area.
+        if (freekickPoint.transform.localPosition.x > XMax || freekickPoint.transform.localPosition.x < XMin ||
+            freekickPoint.transform.localPosition.z > ZMax || freekickPoint.transform.localPosition.z < ZMin)
+        {
+            freekickPoint.Translate(-direction * (5f * Time.deltaTime));
+        }
     }
 
     private void SetFreekickCurveSettings(Vector3 ballHitDir, float ballHitValue, Vector3 farTargetDir, float farTargetValue,Vector3 nearTargetDir, float nearTargetValue)
@@ -96,13 +107,13 @@ public class FreekickCore : MonoBehaviour
         if (_isBallHit) return;
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            freekickPoint.transform.Rotate(freekickPoint.up, 0.25f);
+            freekickPoint.transform.Rotate(freekickPoint.up, 0.4f);
             trajectoryLineRenderer.transform.eulerAngles = Vector3.zero;
         }
         
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            freekickPoint.transform.Rotate(freekickPoint.up, -0.25f);
+            freekickPoint.transform.Rotate(freekickPoint.up, -0.4f);
             trajectoryLineRenderer.transform.eulerAngles = Vector3.zero;
         }
     }

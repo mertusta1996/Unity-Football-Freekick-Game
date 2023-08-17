@@ -1,4 +1,3 @@
-using System.Globalization;
 using TMPro;
 using UnityEngine;
 

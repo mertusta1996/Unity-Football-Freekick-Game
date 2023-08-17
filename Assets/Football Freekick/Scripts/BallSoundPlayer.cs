@@ -8,9 +8,9 @@ public class BallSoundPlayer : MonoBehaviour
         audioSource.PlayOneShot(audioClip);
     }
     
-    public static void PlaySound(AudioSource audioSource, AudioClip audioClip, float pitch, float sound)
+    public static void PlaySoundByVelocity(AudioSource audioSource, AudioClip audioClip, float pitch, float ballVelocity, float audibleVelocityLimit)
     {
-        audioSource.pitch = pitch;
-        audioSource.PlayOneShot(audioClip, sound);
+        if (ballVelocity > audibleVelocityLimit)
+            PlaySound(audioSource, audioClip, pitch);
     }
 }

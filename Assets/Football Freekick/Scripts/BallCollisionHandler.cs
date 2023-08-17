@@ -25,31 +25,22 @@ public class BallCollisionHandler : MonoBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer($"Ball Limit Colliders"))
         {
-            if (ballVelocity > 3f)
-            {
-                BallSoundPlayer.PlaySound(netAudioSource, netAudioClip, 1 + 12f / ballVelocity);
-            }
+            BallSoundPlayer.PlaySoundByVelocity(netAudioSource, netAudioClip, 1 + 12f / ballVelocity, ballVelocity, 3f);
 
             while (ball.velocity.magnitude > 3f)
             {
-                ball.velocity = this.GetComponent<Rigidbody>().velocity * 0.9f;
+                ball.velocity *= 0.9f;
             }
         }
         
         if (collision.gameObject.layer == LayerMask.NameToLayer($"Crossbar Collider"))
         {
-            if (ballVelocity > 1f)
-            {
-                BallSoundPlayer.PlaySound(crossbarAudioSource, crossbarAudioClip, 1 + 5f / ballVelocity);
-            }
+            BallSoundPlayer.PlaySoundByVelocity(crossbarAudioSource, crossbarAudioClip, 1 + 5f / ballVelocity, ballVelocity, 1f);
         }
         
         if (collision.gameObject.layer == LayerMask.NameToLayer($"Grass"))
         {
-            if (ballVelocity > 1f)
-            {
-                BallSoundPlayer.PlaySound(ballBounceAudioSource, ballBounceAudioClip, 1 + 3f / ballVelocity);
-            }
+            BallSoundPlayer.PlaySoundByVelocity(ballBounceAudioSource, ballBounceAudioClip, 1 + 3f / ballVelocity, ballVelocity, 1f);
         }
     }
 }
