@@ -27,10 +27,10 @@ public class FreekickCore : MonoBehaviour
     public Transform nearTarget;
     public Transform goalCenter;
     
-    private const float XMin = -4.8f;
-    private const float XMax = 4.8f;
-    private const float ZMin = -4.4f;
-    private const float ZMax = 4.4f;
+    private const float XMin = -4.5f;
+    private const float XMax = 4.5f;
+    private const float ZMin = -4f;
+    private const float ZMax = 4f;
     private bool _isShooting;
     private bool _isBallHit;
     private bool _isAvailableForNewFreekick = true;
