@@ -212,10 +212,10 @@ public class FreekickCore : MonoBehaviour
 
     private IEnumerator ShootToNearTarget()
     {
-        while ((ball.position - nearTarget.position).magnitude > 0.01f)
+        while ((ball.position - nearTarget.position).magnitude > 0.2f)
         {
             ball.position = Vector3.MoveTowards(ball.position, nearTarget.position, 0.1f + _power / 100f);
-            yield return new WaitForSecondsRealtime(0.001f);
+            yield return new WaitForSeconds(0.01f);
         }
 
         ShootToFarTarget();
