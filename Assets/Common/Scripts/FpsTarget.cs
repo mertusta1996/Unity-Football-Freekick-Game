@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FpsTarget : MonoBehaviour
 {
-    public bool isFPSTargeting = true;
+    public bool isFpsTargeting = true;
     public int fpsTarget = 60;
     public TextMeshProUGUI fpsText; 
     
@@ -17,7 +17,7 @@ public class FpsTarget : MonoBehaviour
      
     private IEnumerator ShowFPS()
     {
-        while (isFPSTargeting)
+        while (isFpsTargeting)
         {
             if(Application.targetFrameRate != fpsTarget)
                 Application.targetFrameRate = fpsTarget;
