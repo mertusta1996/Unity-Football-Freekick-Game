@@ -38,27 +38,45 @@ public class FreekickCore : MonoBehaviour
 
     public void Update()
     {
-        SetKickAngle();
-        NewFreekickCreate();
+        if (!_isBallHit)
+        {
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                SetKickAngle(1);
+            }
+            
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                SetKickAngle(-1);
+            }
+        }
+
+        if (_isAvailableForNewFreekick)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                NewFreekickCreate();
+            }
+        }
+
 
         if (_isShooting == false)
         {
             SetNewFreekickPosition();
-            return;
         }
-
-        SetCanvasVisibility();
-        SetFreekick();
-        ShootFreekick();
+        else
+        {
+            SetCanvasVisibility();
+            SetFreekick();
+            ShootFreekick();
+        }
     }
 
     private void NewFreekickCreate()
     {
-        if (!Input.GetKeyDown(KeyCode.Return) || !_isAvailableForNewFreekick) return;
         if (trajectoryLineRenderer.gameObject.activeSelf) trajectoryLineRenderer.gameObject.SetActive(false);
 
         _isBallHit = false;
-
         _isShooting = !_isShooting;
         ball.Sleep();
 
@@ -102,20 +120,10 @@ public class FreekickCore : MonoBehaviour
         nearTarget.Translate(nearTargetDir * (nearTargetValue * Time.deltaTime));
     }
 
-    private void SetKickAngle()
+    private void SetKickAngle(int direction)
     {
-        if (_isBallHit) return;
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            freekickPoint.transform.Rotate(freekickPoint.up, 0.4f);
-            trajectoryLineRenderer.transform.eulerAngles = Vector3.zero;
-        }
-        
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            freekickPoint.transform.Rotate(freekickPoint.up, -0.4f);
-            trajectoryLineRenderer.transform.eulerAngles = Vector3.zero;
-        }
+        freekickPoint.transform.Rotate(freekickPoint.up, direction * 0.4f);
+        trajectoryLineRenderer.transform.eulerAngles = Vector3.zero;
     }
 
     private void SetCanvasVisibility()
@@ -217,7 +225,7 @@ public class FreekickCore : MonoBehaviour
         if (ballDistanceText.gameObject.activeSelf) ballDistanceText.gameObject.SetActive(false);
         SetInstructionPanels(false, false, false);
 
-        BallSoundPlayer.PlaySound(shootAudioSource, shootAudioClip, 1 - (1 - (50f / _power)) * 0.2f);
+        BallSoundPlayer.PlaySound(shootAudioSource, shootAudioClip, 1 + (2 - _power * 0.04f));
         StartCoroutine(ShootToNearTarget());
     }
 

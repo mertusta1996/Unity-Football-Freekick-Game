@@ -793,7 +793,7 @@ GameObject:
   - component: {fileID: 358559576}
   - component: {fileID: 358559575}
   - component: {fileID: 358559574}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1936,7 +1936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &774825913
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2008,7 +2008,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 12
-  m_fontSizeMax: 30
+  m_fontSizeMax: 25
   m_fontStyle: 1
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
@@ -5615,7 +5615,7 @@ GameObject:
   - component: {fileID: 1989881372}
   - component: {fileID: 1989881371}
   m_Layer: 0
-  m_Name: FPSLimiter
+  m_Name: FpsTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5633,7 +5633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8647624d60dc3e146b7fa7a37656568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: 60
+  isFPSTargeting: 1
+  fpsTarget: 60
   fpsText: {fileID: 774825914}
 --- !u!4 &1989881372
 Transform:
