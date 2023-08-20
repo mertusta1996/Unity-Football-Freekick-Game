@@ -17,7 +17,7 @@ public class FreekickCore : MonoBehaviour
     public GameObject ballHitCanvas, directionCanvas, freekickPositionSelectionPanel, freekickSettingPanel, freekickCompletedPanel;
     public TextMeshProUGUI ballDistanceText;
 
-    [Header("Freekick Positions")] 
+    [Header("Points")] 
     public Transform freekickPoint;
     public Transform farTarget, nearTarget, goalCenter;
     
@@ -37,6 +37,7 @@ public class FreekickCore : MonoBehaviour
 
     private void Update()
     {
+        // Taking Inputs.
         if (!_isUnavailableForNewFreekick && Input.GetKeyDown(KeyCode.Return)) NewFreekickCreate();
         _isRightKickAngle = !_isBallHit && Input.GetKey(KeyCode.RightArrow);
         _isLeftKickAngle = !_isBallHit && Input.GetKey(KeyCode.LeftArrow);
@@ -45,18 +46,9 @@ public class FreekickCore : MonoBehaviour
         _isRightFreekickPosition = !_isShooting && Input.GetKey(KeyCode.D);
         _isLeftFreekickPosition = !_isShooting && Input.GetKey(KeyCode.A);
 
-        // Set Freekick UI.
-        if (_isShooting == false)
-        {
-            SetNewFreekickUI();
-        }
-        else if (directionCanvas.activeSelf)
-        {
-            directionCanvas.SetActive(false);
-        }
-
         if (_isShooting)
         {
+            if (directionCanvas.activeSelf) directionCanvas.SetActive(false);
             if (!_isBallHit)
             {
                 if (!ballHitCanvas.activeSelf) ballHitCanvas.SetActive(true);
@@ -99,10 +91,12 @@ public class FreekickCore : MonoBehaviour
                 if (trajectoryLineRenderer.gameObject.activeSelf) trajectoryLineRenderer.gameObject.SetActive(false);
             }
         }
+        else SetNewFreekickUI();
     }
 
     private void FixedUpdate()
     {
+        // Applying Inputs.
         if(_isRightKickAngle) SetKickAngle(1);
         if(_isLeftKickAngle) SetKickAngle(-1);
         if(_isForwardFreekickPosition) TranslateFreekickPointWithInput(Vector3.forward);
@@ -132,7 +126,6 @@ public class FreekickCore : MonoBehaviour
         if (!directionCanvas.activeSelf) directionCanvas.SetActive(true);
         if (ballHitCanvas.activeSelf) ballHitCanvas.SetActive(false);
         if (!ballDistanceText.gameObject.activeSelf) ballDistanceText.gameObject.SetActive(true);
-        
         ballDistanceText.text = DistanceConversion.Distance((ball.position - goalCenter.position).magnitude);
         SetInstructionPanels(true, false, false);
     }
@@ -189,7 +182,6 @@ public class FreekickCore : MonoBehaviour
     {
         if (ballDistanceText.gameObject.activeSelf) ballDistanceText.gameObject.SetActive(false);
         SetInstructionPanels(false, false, false);
-
         BallSoundPlayer.PlaySound(shootAudioSource, shootAudioClip, 1 + (2 - _power * 0.0666f));
         StartCoroutine(ShootToNearTarget());
     }
