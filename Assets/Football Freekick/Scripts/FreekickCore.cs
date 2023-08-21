@@ -59,6 +59,7 @@ public class FreekickCore : MonoBehaviour
             if (directionCanvas.activeSelf) directionCanvas.SetActive(false);
             if (!_isBallHit)
             {
+                // Applying UI changes for shooting.
                 if (!ballHitCanvas.activeSelf) ballHitCanvas.SetActive(true);
                 if (!trajectoryLineRenderer.gameObject.activeSelf) trajectoryLineRenderer.gameObject.SetActive(true);
                 SetInstructionPanels(false, true, false);
@@ -122,10 +123,10 @@ public class FreekickCore : MonoBehaviour
         if (_isUpBallHitPos || _isDownBallHitPos || _isRightBallHitPos || _isLeftBallHitPos)
         {
             var ballHitDiff = ballHitCanvas.transform.localScale.magnitude;
-            if(_isUpBallHitPos) ballHitPos.Translate(Vector3.up * (ballHitDiff * 0.2f * Time.fixedDeltaTime));
-            if(_isDownBallHitPos) ballHitPos.Translate(-Vector3.up * (ballHitDiff * 0.2f * Time.fixedDeltaTime));
-            if(_isRightBallHitPos) ballHitPos.Translate(Vector3.right * (ballHitDiff * 0.2f * Time.fixedDeltaTime));
-            if(_isLeftBallHitPos) ballHitPos.Translate(-Vector3.right * (ballHitDiff * 0.2f * Time.fixedDeltaTime));
+            if (_isUpBallHitPos) TranslateBallHitPosWithInput(Vector3.up, ballHitDiff);
+            if(_isDownBallHitPos) TranslateBallHitPosWithInput(-Vector3.up, ballHitDiff);
+            if(_isRightBallHitPos) TranslateBallHitPosWithInput(Vector3.right, ballHitDiff);
+            if(_isLeftBallHitPos) TranslateBallHitPosWithInput(-Vector3.right, ballHitDiff);
         }
         
         // Applying Shoot Slider Input.
@@ -165,6 +166,12 @@ public class FreekickCore : MonoBehaviour
         {
             freekickPoint.Translate(-direction * (12f * Time.fixedDeltaTime));
         }
+    }
+    
+    private void TranslateBallHitPosWithInput(Vector3 direction, float ballHitDiff)
+    {
+        // Sets ball hit pos.
+        ballHitPos.Translate(direction * (ballHitDiff * 0.2f * Time.fixedDeltaTime));
     }
     
     private void SetKickAngle(int direction)
