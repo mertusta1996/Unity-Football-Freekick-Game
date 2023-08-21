@@ -38,7 +38,7 @@ public class FreekickCore : MonoBehaviour
 
     private void Update()
     {
-        // Opens and closes "Football Arena" gameobject if pressing "F" button.
+        // Opens and closes "Football Arena" gameObject if pressing "F" button.
         if(Input.GetKeyDown(KeyCode.F)) footballArena.SetActive(!footballArena.activeSelf);
         
         // When available creates new freekick if pressing "Enter" button.
@@ -70,14 +70,15 @@ public class FreekickCore : MonoBehaviour
                 _isRightBallHitPos = Input.GetKey(KeyCode.D);
                 _isLeftBallHitPos = Input.GetKey(KeyCode.A);
 
+                var originPoint = Vector3.zero;
                 var ballHitPosLocal = ballHitPos.localPosition;
-                var distance = Vector3.Distance(ballHitPosLocal, Vector3.zero);
-
-                var fromOriginToObject = ballHitPosLocal - Vector3.zero;
+                var distance = Vector3.Distance(ballHitPosLocal, originPoint);
+                var fromOriginToObject = ballHitPosLocal - originPoint;
+                
                 if (distance > BallHitPosRadius)
                 {
                     fromOriginToObject *= BallHitPosRadius / distance;
-                    ballHitPos.localPosition = Vector3.zero + fromOriginToObject;
+                    ballHitPos.localPosition = originPoint + fromOriginToObject;
                 }
 
                 // Set Freekick Curve Settings.
@@ -135,7 +136,7 @@ public class FreekickCore : MonoBehaviour
 
     private void NewFreekickCreate()
     {
-        // When creating new freekick, all scene components and bool variables are setting here.
+        // When creating new freekick, all scene components and booleans are setting here.
         if (trajectoryLineRenderer.gameObject.activeSelf) trajectoryLineRenderer.gameObject.SetActive(false);
         _isBallHit = false;
         _isShooting = !_isShooting;
@@ -170,7 +171,7 @@ public class FreekickCore : MonoBehaviour
     
     private void TranslateBallHitPosWithInput(Vector3 direction, float ballHitDiff)
     {
-        // Sets ball hit pos.
+        // Sets Ball Hit Position.
         ballHitPos.Translate(direction * (ballHitDiff * 0.2f * Time.fixedDeltaTime));
     }
     
@@ -207,7 +208,7 @@ public class FreekickCore : MonoBehaviour
 
     private IEnumerator WaitForResetShootSlider()
     {
-        // Waits seconds after shooting for avoid the possibility of the player accidentally skipping the shot and taking a new freekick.
+        // Waits seconds after shooting for avoid the possibility of the player accidentally skipping the shoot and taking a new freekick.
         _isBallHit = true;
         _isUnavailableForNewFreekick = true;
         yield return new WaitForSecondsRealtime(4f);
