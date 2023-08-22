@@ -6,26 +6,29 @@ There are some demo gifs for my project :
 
 - Freekick Demo :
   
-![freekick demo](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/2b4be1d3-9170-4b9a-a122-8d88d9603ff0)
+![freekick demo](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/71546018-f8dc-4717-907a-c8c8a2d4a06f)
+
 
 - Penalty Demo :
   
-![penalty demo](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/02178177-4883-4d7b-b61b-f90dafb634df)
+![penalty demo](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/d49485f3-e008-464a-8672-0c0b062d23ac)
+
 
 - Angled Freekick Demo :
   
-![angled freekick demo](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/df54082a-bcd0-43ee-a602-2d19bd71911f)
+![angled freekick demo](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/cb51cdc2-8952-4522-ae8f-bc8522175e46)
+
 
 - Long Distance Freekick Demo :
   
-![long distance freekick demo](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/4aaa25d2-9934-4e99-ab07-de16e7bfd8b4)
+![long distance freekick demo](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/bf1e172c-a8a2-406c-b1a2-06e6c240df4c)
+
 
 - Project's Sounds Demo :
 
 
 
-
-https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/d322cfe4-778c-4e04-919c-829f4f5b734c
+https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/e35e2472-fb2b-474d-b7bd-8d9b7b3e1128
 
 
 
@@ -39,14 +42,16 @@ https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/d32
 - In this game project; there are states of freekick mechanism : "freekick position selection", "shoot" and "new freekick". When shooting completed, player could take new freekick again.
 
 ### "Freekick Position Selection"
-![freekick position selection](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/e6f6decf-20f9-462a-94ba-d892b07098c5)
+![freekick position selection](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/2e99e1d2-d1f7-41db-8914-5c88884fe769)
+
 
 - Player could change "ball's position" with using "W","A","S","D" keys and moves the ball position.
 
 - Player could set the finalized "ball's position" with pressing "Enter" key.
 
 ### "Shoot"
-![shoot](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/02102295-5ab4-4d03-ae4f-b5d529aa9356)
+![shoot](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/46ae7828-1a83-4fb3-b23d-ed6148b2907e)
+
 
 - Player could set "ball hit point" with using "W","A","S","D" keys.
 
@@ -61,11 +66,13 @@ https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/d32
 ### Additional Settings
 - Player could open/close the visibility of "Football Stadium" with pressing "F" key.
 
-![open or close the visibility Stadium](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/1810bced-ac81-4c66-bf2a-d1721ae216a8)
+![open or close the visibility Stadium](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/a8937ca5-ed33-4444-bb51-442e4ff79486)
+
 
 - Player could change the height of freekick camera with using "Mouse Scroll" input.
 
-![height of freekick camera](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/59a81f7c-49ea-4ec0-b198-84e24c64249f)
+![height of freekick camera](https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/5ceb467c-7026-45ae-84cd-806d36ae415f)
+
 
 ## What were the subjects focused on?
 
