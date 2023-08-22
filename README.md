@@ -24,7 +24,9 @@ There are some demo gifs for my project :
 
 
 
-https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/b0368640-137f-4c6c-9275-b17f25fd8c2d
+
+https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/d322cfe4-778c-4e04-919c-829f4f5b734c
+
 
 
 
