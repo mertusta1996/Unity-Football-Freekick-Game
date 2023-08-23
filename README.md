@@ -37,6 +37,10 @@ https://github.com/mertusta1996/Unity-Football-Freekick-Game/assets/70747383/e35
 
 - Football "Freekick" is kicking action to ball in the field of play. Players could "shoot" or "pass" the ball to the target for taking an advantage.
 
+## FIFA 23 video game's Freekick System
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/DDTItj3gOJM/0.jpg)](http://www.youtube.com/watch?v=DDTItj3gOJM "FIFA 23 Fantastic Free Kick Goal Zambia vs Japan PS5")
+
 ## How to play?
  
 - In this game project; there are states of freekick mechanism : "freekick position selection", "shoot" and "new freekick". When shooting completed, player could take new freekick again.
